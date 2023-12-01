@@ -7,16 +7,16 @@ public class Post {
     private String time;
     private int Situation;
     private int Category;
-    private int Use;
+    private int User;
 
-    public Post(int id, String content, String image, String time, int situation, int category, int use) {
+    public Post(int id, String content, String image, String time, int situation, int category, int user) {
         this.id = id;
         this.content = content;
         this.image = image;
         this.time = time;
         Situation = situation;
         Category = category;
-        Use = use;
+        User = user;
 
     }
 
@@ -68,11 +68,11 @@ public class Post {
         Category = category;
     }
 
-    public int getUse() {
-        return Use;
+    public int getUser() {
+        return User;
     }
 
-    public void setUse(int use) {
-        Use = use;
+    public void setUser(int user) {
+        User = user;
     }
 }
