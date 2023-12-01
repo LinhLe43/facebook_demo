@@ -1,22 +1,22 @@
 package com.example.facebook_servlet_demo.model;
 
 public class Comment {
-    private int id ;
+    private int id;
     private String content;
     private String image;
     private String date;
-    private int idSituation;
-    private int idCategory;
-    private int idUse;
+    private int Situation;
+    private int Category;
+    private int Use;
 
-    public Comment(int id, String content, String image, String date, int idSituation, int idCategory, int idUse) {
+    public Comment(int id, String content, String image, String date, int situation, int category, int use) {
         this.id = id;
         this.content = content;
         this.image = image;
         this.date = date;
-        this.idSituation = idSituation;
-        this.idCategory = idCategory;
-        this.idUse = idUse;
+        Situation = situation;
+        Category = category;
+        Use = use;
     }
 
     public int getId() {
@@ -51,27 +51,27 @@ public class Comment {
         this.date = date;
     }
 
-    public int getIdSituation() {
-        return idSituation;
+    public int getSituation() {
+        return Situation;
     }
 
-    public void setIdSituation(int idSituation) {
-        this.idSituation = idSituation;
+    public void setSituation(int situation) {
+        Situation = situation;
     }
 
-    public int getIdCategory() {
-        return idCategory;
+    public int getCategory() {
+        return Category;
     }
 
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
+    public void setCategory(int category) {
+        Category = category;
     }
 
-    public int getIdUse() {
-        return idUse;
+    public int getUse() {
+        return Use;
     }
 
-    public void setIdUse(int idUse) {
-        this.idUse = idUse;
+    public void setUse(int use) {
+        Use = use;
     }
 }
