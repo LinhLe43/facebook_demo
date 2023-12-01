@@ -5,18 +5,18 @@ public class Comment {
     private String content;
     private String image;
     private String date;
-    private int Situation;
-    private int Category;
-    private int Use;
+    private Situation situation;
+    private  Category category;
+    private User user;
 
-    public Comment(int id, String content, String image, String date, int situation, int category, int use) {
+    public Comment(int id, String content, String image, String date, Situation situation, Category category, User user) {
         this.id = id;
         this.content = content;
         this.image = image;
         this.date = date;
-        Situation = situation;
-        Category = category;
-        Use = use;
+        this.situation = situation;
+        this.category = category;
+        this.user = user;
     }
 
     public int getId() {
@@ -51,27 +51,27 @@ public class Comment {
         this.date = date;
     }
 
-    public int getSituation() {
-        return Situation;
+    public Situation getSituation() {
+        return situation;
     }
 
-    public void setSituation(int situation) {
-        Situation = situation;
+    public void setSituation(Situation situation) {
+        this.situation = situation;
     }
 
-    public int getCategory() {
-        return Category;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategory(int category) {
-        Category = category;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public int getUse() {
-        return Use;
+    public User getUser() {
+        return user;
     }
 
-    public void setUse(int use) {
-        Use = use;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
