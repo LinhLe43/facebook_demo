@@ -5,17 +5,15 @@ public class Comment {
     private String content;
     private String image;
     private String date;
-    private Situation situation;
-    private  Category category;
+    private Post post;
     private User user;
 
-    public Comment(int id, String content, String image, String date, Situation situation, Category category, User user) {
+    public Comment(int id, String content, String image, String date, Post post, User user) {
         this.id = id;
         this.content = content;
         this.image = image;
         this.date = date;
-        this.situation = situation;
-        this.category = category;
+        this.post = post;
         this.user = user;
     }
 
@@ -51,20 +49,12 @@ public class Comment {
         this.date = date;
     }
 
-    public Situation getSituation() {
-        return situation;
+    public Post getPost() {
+        return post;
     }
 
-    public void setSituation(Situation situation) {
-        this.situation = situation;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public User getUser() {
