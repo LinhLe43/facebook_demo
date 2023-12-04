@@ -6,5 +6,5 @@ public interface ICategoryService<C> {
     void add(C c);
     void edit(int id, C c);
     void delete(int id);
-    List<C> findAllCategory();
+    List<C> findAll();
 }

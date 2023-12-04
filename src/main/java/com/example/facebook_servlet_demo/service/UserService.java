@@ -22,7 +22,7 @@ public class UserService implements IUserService<User> {
     }
 
     @Override
-    public List<User> findAllUser() {
+    public List<User> findAll() {
         return null;
     }
 }

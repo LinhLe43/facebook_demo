@@ -23,7 +23,8 @@ public class CommentService implements ICommentService<Comment> {
     }
 
     @Override
-    public List<Comment> findAllComment() {
+    public List<Comment> findAll() {
         return null;
     }
+
 }

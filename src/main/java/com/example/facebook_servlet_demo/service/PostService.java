@@ -22,7 +22,8 @@ public class PostService implements IPostService<Post> {
     }
 
     @Override
-    public List<Post> findAllPost() {
+    public List<Post> findAll() {
         return null;
     }
+
 }

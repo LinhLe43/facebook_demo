@@ -22,7 +22,7 @@ public class SituationService implements ISituationService<Situation> {
     }
 
     @Override
-    public List<Situation> findAllSituation() {
+    public List<Situation> findAll() {
         return null;
     }
 }
