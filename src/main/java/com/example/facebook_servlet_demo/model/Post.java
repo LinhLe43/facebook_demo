@@ -5,19 +5,18 @@ public class Post {
     private String content;
     private String image;
     private String time;
-    private int Situation;
-    private int Category;
-    private int User;
+    private Situation situation;
+    private Category category;
+    private User user;
 
-    public Post(int id, String content, String image, String time, int situation, int category, int user) {
+    public Post(int id, String content, String image, String time, Situation situation, Category category, User user) {
         this.id = id;
         this.content = content;
         this.image = image;
         this.time = time;
-        Situation = situation;
-        Category = category;
-        User = user;
-
+        this.situation = situation;
+        this.category = category;
+        this.user = user;
     }
 
     public int getId() {
@@ -52,27 +51,27 @@ public class Post {
         this.time = time;
     }
 
-    public int getSituation() {
-        return Situation;
+    public Situation getSituation() {
+        return situation;
     }
 
-    public void setSituation(int situation) {
-        Situation = situation;
+    public void setSituation(Situation situation) {
+        this.situation = situation;
     }
 
-    public int getCategory() {
-        return Category;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategory(int category) {
-        Category = category;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public int getUser() {
-        return User;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser(int user) {
-        User = user;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
