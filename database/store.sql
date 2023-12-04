@@ -46,5 +46,5 @@ create table comment
     foreign key (idPost) references post(id),
     idUser int,
     foreign key (idUser) references user(id)
-)
-
+);
+insert into comment(id, time, content, idPost, idUser) VALUES (?, ?, ?, ?, ?);
