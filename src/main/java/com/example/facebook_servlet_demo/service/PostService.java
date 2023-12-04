@@ -122,7 +122,7 @@ public class PostService implements IPostService<Post> {
                 Situation situation = new Situation(idSituation);
                 Category category = new Category(idCategory);
                 User user = new User(idUser);
-                post = new Post(id, content, image, time, situation, category, user)
+                post = new Post(id, content, image, time, situation, category, user);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
