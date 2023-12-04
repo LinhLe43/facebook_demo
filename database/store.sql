@@ -81,3 +81,6 @@ delete
 from post
 where id = ?;
 
+-- Get Post by Id
+select * from post where id = ?;
+

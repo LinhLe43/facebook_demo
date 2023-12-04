@@ -9,6 +9,10 @@ public class Situation {
         this.name = name;
     }
 
+    public Situation(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
