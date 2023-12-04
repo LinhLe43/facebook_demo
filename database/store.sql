@@ -1,5 +1,6 @@
 create database blog;
 use blog;
+drop database blog;
 
 create table user
 (
@@ -42,9 +43,10 @@ create table comment
     id int not null primary key auto_increment,
     time varchar(20),
     content text,
+    image text,
     idPost int,
     foreign key (idPost) references post(id),
     idUser int,
     foreign key (idUser) references user(id)
-)
+);
 
