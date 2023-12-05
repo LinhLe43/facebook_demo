@@ -74,7 +74,7 @@ public class PostService implements IPostService<Post> {
     @Override
     public List<Post> findAll() {
         List<Post> posts = new ArrayList<>();
-        String sql = "select p.*, c.name as categoryName, s.name as situationName, u.name as userName\n" +
+        String sql = "select p.*, c.name as nameCategory, s.name as nameSituation, u.name as nameUser\n" +
                 "from post p\n" +
                 "         join category c on c.id = p.idCategory\n" +
                 "         join situation s on p.idSituation = s.id\n" +
@@ -90,9 +90,9 @@ public class PostService implements IPostService<Post> {
                 int idSituation = resultSet.getInt("idSituation");
                 int idCategory = resultSet.getInt("idCategory");
                 int idUser = resultSet.getInt("idUser");
-                String categoryName = resultSet.getString("categoryName");
-                String situationName = resultSet.getString("situationName");
-                String userName = resultSet.getString("userName");
+                String categoryName = resultSet.getString("nameCategory");
+                String situationName = resultSet.getString("nameSituation");
+                String userName = resultSet.getString("nameUser");
                 Category category = new Category(idCategory, categoryName);
                 Situation situation = new Situation(idSituation, situationName);
                 User user = new User(idUser, userName);
@@ -108,7 +108,11 @@ public class PostService implements IPostService<Post> {
     @Override
     public Post getById(int id) {
         Post post = null;
-        String sql = "select * from post where id = ?";
+        String sql = "select p.*, c.name as nameCategory, s.name as nameSituation, u.name as nameUser\n" +
+                "from post p\n" +
+                "         join category c on c.id = p.idCategory\n" +
+                "         join situation s on p.idSituation = s.id\n" +
+                "         join user u on p.idUser = u.id where p.id = ?;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
@@ -118,11 +122,14 @@ public class PostService implements IPostService<Post> {
                 String image = resultSet.getString("image");
                 String time = resultSet.getString("time");
                 int idSituation = resultSet.getInt("idSituation");
+                String nameSituation = resultSet.getString("nameSituation");
                 int idCategory = resultSet.getInt("idCategory");
+                String nameCategory = resultSet.getString("nameCategory");
                 int idUser = resultSet.getInt("idUser");
-                Situation situation = new Situation(idSituation);
-                Category category = new Category(idCategory);
-                User user = new User(idUser);
+                String nameUser = resultSet.getString("nameUser");
+                Situation situation = new Situation(idSituation, nameSituation);
+                Category category = new Category(idCategory, nameCategory);
+                User user = new User(idUser, nameUser);
                 post = new Post(id, content, image, time, situation, category, user);
             }
         } catch (SQLException e) {

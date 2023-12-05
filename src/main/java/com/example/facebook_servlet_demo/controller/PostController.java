@@ -34,8 +34,10 @@ public class PostController extends HttpServlet {
                 showCreate(req, resp);
                 break;
             case "update":
-                RequestDispatcher dispatcher3 = req.getRequestDispatcher("post/update.jsp");
-                dispatcher3.forward(req, resp);
+                showUpdate(req, resp);
+                break;
+            case "view":
+                showView(req, resp);
                 break;
         }
     }
@@ -56,6 +58,26 @@ public class PostController extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 
+    private void showView(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("post/view.jsp");
+        int idView = Integer.parseInt(req.getParameter("id"));
+        Post viewPost = postService.getById(idView);
+        req.setAttribute("post", viewPost);
+        dispatcher.forward(req, resp);
+    }
+
+    private void showUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("post/update.jsp");
+        int idUpdate = Integer.parseInt(req.getParameter("id"));
+        Post updatePost = postService.getById(idUpdate);
+        req.setAttribute("post", updatePost);
+        List<Category> categories = categoryService.findAll();
+        List<Situation> situations = situationService.findAll();
+        req.setAttribute("categories", categories);
+        req.setAttribute("situations", situations);
+        dispatcher.forward(req, resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -65,6 +87,9 @@ public class PostController extends HttpServlet {
                 break;
             case "delete":
                 delete(req, resp);
+                break;
+            case "update":
+                update(req, resp);
                 break;
         }
     }
@@ -87,6 +112,22 @@ public class PostController extends HttpServlet {
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int idDelete = Integer.parseInt(req.getParameter("id"));
         postService.delete(idDelete);
+        resp.sendRedirect("/posts?action=list");
+    }
+
+    private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int idUpdate = Integer.parseInt(req.getParameter("id"));
+        String content = req.getParameter("content");
+        String image = req.getParameter("image");
+        String time = req.getParameter("time");
+        int idSituation = Integer.parseInt(req.getParameter("idSituation"));
+        int idCategory = Integer.parseInt(req.getParameter("idCategory"));
+        int idUser = Integer.parseInt(req.getParameter("idUser"));
+        Situation situation = new Situation(idSituation);
+        Category category = new Category(idCategory);
+        User user = new User(idUser);
+        Post updatePost = new Post(content, image, time, situation, category, user);
+        postService.edit(idUpdate, updatePost);
         resp.sendRedirect("/posts?action=list");
     }
 }
