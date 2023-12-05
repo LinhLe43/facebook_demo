@@ -31,16 +31,7 @@ public class PostController extends HttpServlet {
                 showList(req, resp);
                 break;
             case "create":
-                RequestDispatcher dispatcher1 = req.getRequestDispatcher("post/create.jsp");
-                List<Category> categories = categoryService.findAll();
-                List<Situation> situations = situationService.findAll();
-                req.setAttribute("categories", categories);
-                req.setAttribute("situations", situations);
-                dispatcher1.forward(req, resp);
-                break;
-            case "delete":
-                RequestDispatcher dispatcher2 = req.getRequestDispatcher("post/delete.jsp");
-                dispatcher2.forward(req, resp);
+                showCreate(req, resp);
                 break;
             case "update":
                 RequestDispatcher dispatcher3 = req.getRequestDispatcher("post/update.jsp");
@@ -56,24 +47,46 @@ public class PostController extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 
+    private void showCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("post/create.jsp");
+        List<Category> categories = categoryService.findAll();
+        List<Situation> situations = situationService.findAll();
+        req.setAttribute("categories", categories);
+        req.setAttribute("situations", situations);
+        dispatcher.forward(req, resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         switch (action) {
             case "create":
-                String content = req.getParameter("content");
-                String image = req.getParameter("image");
-                String time = req.getParameter("time");
-                int idSituation = Integer.parseInt(req.getParameter("idSituation"));
-                int idCategory = Integer.parseInt(req.getParameter("idCategory"));
-                int idUser = Integer.parseInt(req.getParameter("idUser"));
-                Situation situation = new Situation(idSituation);
-                Category category = new Category(idCategory);
-                User user = new User(idUser);
-                Post newPost = new Post(content, image, time, situation, category, user);
-                postService.add(newPost);
-                resp.sendRedirect("/posts?action=list");
+                create(req, resp);
+                break;
+            case "delete":
+                delete(req, resp);
                 break;
         }
+    }
+
+    private void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String content = req.getParameter("content");
+        String image = req.getParameter("image");
+        String time = req.getParameter("time");
+        int idSituation = Integer.parseInt(req.getParameter("idSituation"));
+        int idCategory = Integer.parseInt(req.getParameter("idCategory"));
+        int idUser = Integer.parseInt(req.getParameter("idUser"));
+        Situation situation = new Situation(idSituation);
+        Category category = new Category(idCategory);
+        User user = new User(idUser);
+        Post newPost = new Post(content, image, time, situation, category, user);
+        postService.add(newPost);
+        resp.sendRedirect("/posts?action=list");
+    }
+
+    private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int idDelete = Integer.parseInt(req.getParameter("id"));
+        postService.delete(idDelete);
+        resp.sendRedirect("/posts?action=list");
     }
 }

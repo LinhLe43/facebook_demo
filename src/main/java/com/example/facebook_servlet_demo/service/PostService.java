@@ -111,6 +111,7 @@ public class PostService implements IPostService<Post> {
         String sql = "select * from post where id = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String content = resultSet.getString("content");

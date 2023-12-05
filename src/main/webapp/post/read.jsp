@@ -14,7 +14,9 @@
 </head>
 <body>
 <h1>Danh sách các bài Post</h1>
-<a href="http://localhost:8080/posts?action=create"><button>Thêm mới</button></a>
+<a href="http://localhost:8080/posts?action=create">
+    <button>Thêm mới</button>
+</a>
 <table border="1px">
     <tr>
         <td>STT</td>
@@ -31,9 +33,19 @@
             <td>${post.user.name}</td>
             <td>${post.category.name}</td>
             <td>${post.situation.name}</td>
-            <td><button>Xem chi tiết</button></td>
-            <td><button>Sửa</button></td>
-            <td><button>Xóa</button></td>
+            <td>
+                <button>Xem chi tiết</button>
+            </td>
+            <td>
+                <button>Sửa</button>
+            </td>
+            <form action="posts" method="post">
+                <td>
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="${post.id}">
+                    <button>Xóa</button>
+                </td>
+            </form>
         </tr>
     </c:forEach>
 </table>
