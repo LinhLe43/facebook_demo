@@ -14,14 +14,15 @@
 </head>
 <body>
 <h1>Danh sách các bài Post</h1>
+<a href="http://localhost:8080/posts?action=create"><button>Thêm mới</button></a>
 <table border="1px">
     <tr>
         <td>STT</td>
-        <td>Time</td>
-        <td>User</td>
-        <td>Category</td>
-        <td>Situation</td>
-        <td colspan="3">Action</td>
+        <td>Thời Gian</td>
+        <td>Người dùng</td>
+        <td>Thể Loại</td>
+        <td>Trạng Thái</td>
+        <td colspan="3">Hoạt Động</td>
     </tr>
     <c:forEach items="${posts}" var="post">
         <tr>
