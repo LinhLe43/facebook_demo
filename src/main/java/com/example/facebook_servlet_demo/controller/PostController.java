@@ -94,6 +94,7 @@ public class PostController extends HttpServlet {
         }
     }
 
+    // Test github
     private void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String content = req.getParameter("content");
         String image = req.getParameter("image");
