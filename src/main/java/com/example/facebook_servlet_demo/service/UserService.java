@@ -56,4 +56,6 @@ public class UserService implements IUserService<User> {
 
     @Override
     public List<User> findAll() {
+        return null;
+    }
 }
