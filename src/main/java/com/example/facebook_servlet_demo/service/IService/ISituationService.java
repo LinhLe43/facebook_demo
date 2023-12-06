@@ -6,5 +6,5 @@ public interface ISituationService<C> {
     void add(C c);
     void edit(int id, C c);
     void delete(int id);
-    List<C> findAllSituation();
+    List<C> findAll();
 }

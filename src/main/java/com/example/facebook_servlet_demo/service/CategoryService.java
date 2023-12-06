@@ -26,7 +26,8 @@ public class CategoryService implements ICategoryService<Category> {
     }
 
     @Override
-    public List<Category> findAllCategory() {
+    public List<Category> findAll() {
         return null;
     }
+
 }

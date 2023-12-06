@@ -11,7 +11,6 @@ public class CommentService implements ICommentService<Comment> {
 
     @Override
     public void add(Comment comment) {
-        String sql = "insert into category(id, name, ) values (?, ?)";
     }
 
     @Override
@@ -25,7 +24,8 @@ public class CommentService implements ICommentService<Comment> {
     }
 
     @Override
-    public List<Comment> findAllComment() {
+    public List<Comment> findAll() {
         return null;
     }
+
 }
