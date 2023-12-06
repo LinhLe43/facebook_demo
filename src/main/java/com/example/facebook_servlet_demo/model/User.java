@@ -7,10 +7,17 @@ public class User {
     private String image;
     private String sex;
     private String dob;
-    private  String address;
+    private String address;
 
     public User(int id, String name, String image, String sex, String dob, String address) {
         this.id = id;
+        this.name = name;
+        this.image = image;
+        this.sex = sex;
+        this.dob = dob;
+        this.address = address;
+    }
+    public User(String name, String image, String sex, String dob, String address) {
         this.name = name;
         this.image = image;
         this.sex = sex;
