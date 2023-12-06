@@ -8,11 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Home</title>
 </head>
 <body>
 <a href="http://localhost:8080/posts?action=list">
     <button>List Posts</button>
+</a>
+<a href="http://localhost:8080/comment?action=list">
+    <button>List Comment</button>
 </a>
 </body>
 </html>
