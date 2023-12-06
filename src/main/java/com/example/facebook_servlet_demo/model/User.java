@@ -3,6 +3,7 @@ package com.example.facebook_servlet_demo.model;
 public class User {
     private int id;
     private String name;
+    private String password;
     private String image;
     private String sex;
     private String dob;
@@ -22,6 +23,20 @@ public class User {
         this.sex = sex;
         this.dob = dob;
         this.address = address;
+    }
+
+    public User(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    public User(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -70,5 +85,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

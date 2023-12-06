@@ -10,6 +10,12 @@ import java.util.List;
 
 public class UserService implements IUserService<User> {
     Connection connection = ConnectToMySQL.getConnection();
+
+    @Override
+    public User checkLogin(String name, String password) {
+        return null;
+    }
+
     @Override
     public void add(User user) {
         String sql = "insert into user(name, profile_picture, sex, dob, address) values (?, ?, ?, ?, ?)";

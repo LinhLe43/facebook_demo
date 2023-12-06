@@ -19,6 +19,15 @@ public class Post {
         this.user = user;
     }
 
+    public Post(String content, String image, String time, Situation situation, Category category, User user) {
+        this.content = content;
+        this.image = image;
+        this.time = time;
+        this.situation = situation;
+        this.category = category;
+        this.user = user;
+    }
+
     public int getId() {
         return id;
     }
