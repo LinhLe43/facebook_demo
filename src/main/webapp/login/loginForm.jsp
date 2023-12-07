@@ -22,9 +22,13 @@
             <p>Connect with friends and the world around you on Facebook.</p>
         </div>
         <form action="/login" method="post">
-            <input type="text" placeholder="Email or Phone Number" name="username"/>
-            <input type="password" placeholder="Password" name="password">
+            <input type="text" placeholder="Email or Phone Number" name="email"/>
+            <input type="text" placeholder="Password" name="password">
             <button class="login">Log In</button>
+            <br>
+            <a class="create-account" href="https://www.facebook.com/">
+                Create New Account
+            </a>
         </form>
     </div>
 </div>

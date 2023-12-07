@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "loginController", value = "/login")
 public class LoginController extends HttpServlet {
     private UserService userService = new UserService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher("login/loginForm.jsp");
@@ -22,12 +24,14 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userName = req.getParameter("username");
-        String passWord = req.getParameter("password");
-        User newUser = userService.checkLogin(userName, passWord);
-        if(newUser == null) {
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        User account = userService.accountLogin(email, password);
+        if (account == null) {
             resp.sendRedirect("/login");
         } else {
+            HttpSession session = req.getSession();
+            session.setAttribute("account", account);
             resp.sendRedirect("/home");
         }
     }
