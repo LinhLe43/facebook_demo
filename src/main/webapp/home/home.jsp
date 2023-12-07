@@ -361,7 +361,7 @@
                         </div>
                         <span>Rooms</span>
                     </div>
-                    <a href="">
+                    <a href="http://localhost:8080/posts?action=create">
                         create
                     </a>
                 </div>
