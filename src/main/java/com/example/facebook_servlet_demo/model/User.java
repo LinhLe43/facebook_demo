@@ -3,11 +3,23 @@ package com.example.facebook_servlet_demo.model;
 public class User {
     private int id;
     private String name;
+    private String email;
     private String password;
     private String image;
     private String sex;
     private String dob;
     private String address;
+
+    public User(int id, String name, String email, String password, String image, String sex, String dob, String address) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.image = image;
+        this.sex = sex;
+        this.dob = dob;
+        this.address = address;
+    }
 
     public User(int id, String name, String image, String sex, String dob, String address) {
         this.id = id;
@@ -30,9 +42,23 @@ public class User {
         this.name = name;
     }
 
+    public User(int id, String name, String image) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+    }
+
     public User(String name, String password) {
         this.name = name;
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public User(int id) {

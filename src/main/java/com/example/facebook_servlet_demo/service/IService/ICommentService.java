@@ -7,4 +7,5 @@ public interface ICommentService<C> {
     void edit(int id, C c);
     void delete(int id);
     List<C> findAll();
+    C getById(int id);
 }

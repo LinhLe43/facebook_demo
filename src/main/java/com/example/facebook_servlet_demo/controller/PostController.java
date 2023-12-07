@@ -106,7 +106,7 @@ public class PostController extends HttpServlet {
         User user = new User(idUser);
         Post newPost = new Post(content, image, time, situation, category, user);
         postService.add(newPost);
-        resp.sendRedirect("/posts?action=list");
+        resp.sendRedirect("/home");
     }
 
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {

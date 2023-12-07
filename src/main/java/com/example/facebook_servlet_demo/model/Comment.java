@@ -17,6 +17,15 @@ public class Comment {
         this.user = user;
     }
 
+    public Comment(String content, String image, String date, Post post, User user) {
+        this.content = content;
+        this.image = image;
+        this.date = date;
+        this.post = post;
+        this.user = user;
+    }
+
+
     public int getId() {
         return id;
     }

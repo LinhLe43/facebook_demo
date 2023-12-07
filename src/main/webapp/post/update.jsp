@@ -25,13 +25,23 @@
     <label>Trạng Thái</label>
     <select name="idSituation">
         <c:forEach var="situation" items="${situations}">
-            <option value="${situation.id}">${situation.name}</option>
+            <c:if test="${situation.id == post.situation.id}">
+                <option value="${situation.id}" selected>${situation.name}</option>
+            </c:if>
+            <c:if test="${situation.id != post.situation.id}">
+                <option value="${situation.id}">${situation.name}</option>
+            </c:if>
         </c:forEach>
     </select>
     <label>Thể Loại</label>
     <select name="idCategory">
         <c:forEach var="category" items="${categories}">
-            <option value="${category.id}">${category.name}</option>
+            <c:if test="${category.id == post.category.id}">
+                <option value="${category.id}" selected>${category.name}</option>
+            </c:if>
+            <c:if test="${category.id != post.category.id}">
+                <option value="${category.id}">${category.name}</option>
+            </c:if>
         </c:forEach>
     </select>
     <label>Người Đăng</label>
