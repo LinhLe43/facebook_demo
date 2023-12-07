@@ -21,9 +21,9 @@
             <h1 class="logo">Facebook</h1>
             <p>Connect with friends and the world around you on Facebook.</p>
         </div>
-        <form action="/login" method="post">
-            <input type="text" placeholder="Email or Phone Number" name="username"/>
-            <input type="password" placeholder="Password" name="password">
+        <form class="formLogin" action="/login" method="post">
+            <input type="text" placeholder="Email or Phone Number" name="email"/>
+            <input type="text" placeholder="Password" name="password">
             <button class="login">Log In</button>
         </form>
     </div>

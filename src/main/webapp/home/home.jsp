@@ -65,9 +65,9 @@
     <div class="right-side">
         <div class="user">
             <div class="profile">
-                <img src="<c:url value='/home/img/avatar/4.jpg'/>" alt="">
+                <img src="${account.image}" alt="">
             </div>
-            <h4>Anne</h4>
+            <h4>${account.name}</h4>
         </div>
 
         <!--icons-->
@@ -99,9 +99,9 @@
             <div class="menu-item">
                 <div class="user">
                     <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/hero.png'/>" alt="">
+                        <img src="${account.image}" alt="">
                     </div>
-                    <h4>Anne</h4>
+                    <h4>${account.name}</h4>
                 </div>
             </div>
 
@@ -210,7 +210,6 @@
             </div>
         </div>
     </div>
-
 
 
     <!--posts-->
@@ -323,10 +322,10 @@
                 <div class="input">
                     <div class="user">
                         <div class="profile">
-                            <img src="<c:url value='/home/img/avatar/hero.png'/>" alt="">
+                            <img src="${account.image}" alt="">
                         </div>
                     </div>
-                    <input type="text" placeholder="What on your mind, Anne?" name="" id="">
+                    <input type="text" placeholder="What on your mind, ${account.name}?" name="" id="">
                 </div>
                 <div class="media">
                     <div class="category">
@@ -431,93 +430,95 @@
                 </div>
             </div>
             <!--post container-->
-            <div class="view view-post-container smaller-margin">
-                <div class="view-post">
-                    <div class="upper">
-                        <div class="d-flex">
-                            <div class="user">
-                                <div class="profile">
-                                    <img src="<c:url value='/home/img/avatar/5.jpg'/>" alt="">
+            <c:forEach var="post" items="${posts}">
+                <div class="view view-post-container smaller-margin">
+                    <div class="view-post">
+                        <div class="upper">
+                            <div class="d-flex">
+                                <div class="user">
+                                    <div class="profile">
+                                        <img src="${post.user.image}" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="info">
+                                    <h6 class="name">
+                                        ${post.user.name}
+                                    </h6>
+                                    <span class="time">${post.time}</span>
                                 </div>
                             </div>
 
-                            <div class="info">
-                                <h6 class="name">
-                                    diana barry
-                                </h6>
-                                <span class="time">1 hour ago</span>
+
+                            <div class="dots">
+                                <div class="dot"></div>
                             </div>
                         </div>
 
-                        <div class="dots">
-                            <div class="dot"></div>
+                        <div class="desc">
+                            <p>${post.content}</p>
                         </div>
-                    </div>
 
-                    <div class="desc">
-                        <p>Travellimg to the future 🌟 , it's alraedy 2020 🙋‍♂🌈🌴</p>
-                    </div>
+                        <div class="post-img">
+                            <img src="${post.image}" alt="">
+                        </div>
 
-                    <div class="post-img">
-                        <img src="<c:url value='/home/img/posts/1.jpg'/>" alt="">
-                    </div>
-
-                    <div class="actions-container">
-                        <div class="action">
-                            <div class="icon">
-                                <img src="<c:url value='/home/img/icons/thumbs-up.svg'/>" alt="">
-                            </div>
-                            <span>
+                        <div class="actions-container">
+                            <div class="action">
+                                <div class="icon">
+                                    <img src="<c:url value='/home/img/icons/thumbs-up.svg'/>" alt="">
+                                </div>
+                                <span>
                                     like
                                 </span>
-                        </div>
-
-                        <div class="action">
-                            <div class="icon">
-                                <img src="<c:url value='/home/img/icons/comment.svg'/>" alt="">
                             </div>
-                            <span>
+
+                            <div class="action">
+                                <div class="icon">
+                                    <img src="<c:url value='/home/img/icons/comment.svg'/>" alt="">
+                                </div>
+                                <span>
                                     comment
                                 </span>
-                        </div>
-
-                        <div class="action">
-                            <div class="icon">
-                                <img src="<c:url value='/home/img/icons/share.svg'/>" alt="">
                             </div>
-                            <span>
+
+                            <div class="action">
+                                <div class="icon">
+                                    <img src="<c:url value='/home/img/icons/share.svg'/>" alt="">
+                                </div>
+                                <span>
                                     share
                                 </span>
-                        </div>
-                    </div>
-
-                    <div class="write-comment">
-                        <div class="user">
-                            <div class="profile">
-                                <img src="<c:url value='/home/img/avatar/hero.png'/>" alt="">
                             </div>
                         </div>
-                        <div class="input">
-                            <input type="text" placeholder="Write a comment" name="" id="">
-                            <div class="media">
-                                <div class="icon">
-                                    <img src="<c:url value='/home/img/icons/camera.svg'/>" alt="">
-                                </div>
 
-                                <div class="icon">
-                                    <img src="<c:url value='/home/img/icons/image.svg'/>" alt="">
+                        <div class="write-comment">
+                            <div class="user">
+                                <div class="profile">
+                                    <img src="${account.image}" alt="">
                                 </div>
+                            </div>
+                            <div class="input">
+                                <input type="text" placeholder="Write a comment" name="" id="">
+                                <div class="media">
+                                    <div class="icon">
+                                        <img src="<c:url value='/home/img/icons/camera.svg'/>" alt="">
+                                    </div>
 
-                                <div class="icon">
-                                    <img src="<c:url value='/home/img/icons/smile-2.svg'/>" alt="">
+                                    <div class="icon">
+                                        <img src="<c:url value='/home/img/icons/image.svg'/>" alt="">
+                                    </div>
+
+                                    <div class="icon">
+                                        <img src="<c:url value='/home/img/icons/smile-2.svg'/>" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-            </div>
+            </c:forEach>
+
             <!--people you may know-->
             <div class="view friends smaller-margin">
                 <div class="upper">
@@ -665,82 +666,18 @@
                 <h6 class="title">
                     contact
                 </h6>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/1.jpg'/>" alt="">
+                <c:forEach var="user" items="${users}">
+                    <div class="user">
+                        <div class="profile">
+                            <img src="${user.image}" alt="">
+                        </div>
+                        <h4>${user.name}</h4>
                     </div>
-                    <h4>diana berry</h4>
-                </div>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/4.jpg'/>" alt="">
-                    </div>
-                    <h4>rosie pie</h4>
-                </div>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/2.jpg'/>" alt="">
-                    </div>
-                    <h4>samantha jones</h4>
-                </div>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/3.jpg'/>" alt="">
-                    </div>
-                    <h4>john doe</h4>
-                </div>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/4.jpg'/>" alt="">
-                    </div>
-                    <h4>stacy jr.</h4>
-                </div>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/5.jpg'/>" alt="">
-                    </div>
-                    <h4>christin sam</h4>
-                </div>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/6.jpg'/>" alt="">
-                    </div>
-                    <h4>kate simon</h4>
-                </div>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/1.jpg'/>" alt="">
-                    </div>
-                    <h4>diana berry</h4>
-                </div>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/2.jpg'/>" alt="">
-                    </div>
-                    <h4>sarah cerny</h4>
-                </div>
-
-                <div class="user">
-                    <div class="profile">
-                        <img src="<c:url value='/home/img/avatar/3.jpg'/>" alt="">
-                    </div>
-                    <h4>josh doe</h4>
-                </div>
-
+                </c:forEach>
             </div>
         </div>
     </div>
 </div>
-
 
 
 <script src="<c:url value='js/jquery.min.js'/>"></script>

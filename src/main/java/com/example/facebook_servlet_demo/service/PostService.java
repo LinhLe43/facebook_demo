@@ -74,7 +74,7 @@ public class PostService implements IPostService<Post> {
     @Override
     public List<Post> findAll() {
         List<Post> posts = new ArrayList<>();
-        String sql = "select p.*, c.name as nameCategory, s.name as nameSituation, u.name as nameUser\n" +
+        String sql = "select p.*, c.name as nameCategory, s.name as nameSituation, u.name as nameUser, u.image as imageUser\n" +
                 "from post p\n" +
                 "         join category c on c.id = p.idCategory\n" +
                 "         join situation s on p.idSituation = s.id\n" +
@@ -93,9 +93,10 @@ public class PostService implements IPostService<Post> {
                 String categoryName = resultSet.getString("nameCategory");
                 String situationName = resultSet.getString("nameSituation");
                 String userName = resultSet.getString("nameUser");
+                String imageUser = resultSet.getString("imageUser");
                 Category category = new Category(idCategory, categoryName);
                 Situation situation = new Situation(idSituation, situationName);
-                User user = new User(idUser, userName);
+                User user = new User(idUser, userName, imageUser);
                 Post post = new Post(id, content, image, time, situation, category, user);
                 posts.add(post);
             }

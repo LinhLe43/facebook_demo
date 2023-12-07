@@ -10,28 +10,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserService implements IUserService<User> {
     Connection connection = ConnectToMySQL.getConnection();
 
-    @Override
-    public User checkLogin(String name, String password) {
-        String sql = "select name, password\n" +
-                "from user\n" +
-                "where name = ?\n" +
-                "  and password = ?;";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, name);
-            preparedStatement.setString(2, password);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                User account = new User(resultSet.getString("name"), resultSet.getString("password"));
-                return account;
+    public User accountLogin(String email, String password) {
+        for (User user : findAll()) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                return user;
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
         return null;
     }
@@ -82,6 +71,26 @@ public class UserService implements IUserService<User> {
 
     @Override
     public List<User> findAll() {
-        return null;
+        List<User> users = new ArrayList<>();
+        String sql = "select * from user;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password");
+                String image = resultSet.getString("image");
+                String sex = resultSet.getString("sex");
+                String dob = resultSet.getString("dob");
+                String address = resultSet.getString("address");
+                User user = new User(id, name, email, password, image, sex, dob, address);
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
     }
 }
