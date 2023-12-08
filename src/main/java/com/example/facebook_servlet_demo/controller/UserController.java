@@ -76,7 +76,7 @@ public class UserController extends HttpServlet {
         String address = req.getParameter("address");
         User user = new User(name, email, password, image, sex, dob, address);
         userService.add(user);
-        resp.sendRedirect("/users?action=list");
+        resp.sendRedirect("/login");
     }
 
     private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

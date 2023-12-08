@@ -26,7 +26,7 @@
             <input type="text" placeholder="Password" name="password">
             <button class="login">Log In</button>
             <br>
-            <a class="create-account" href="https://www.facebook.com/">
+            <a class="create-account" href="http://localhost:8080/users?action=create">
                 Create New Account
             </a>
         </form>

@@ -17,6 +17,7 @@
     <tr>
         <td>Id</td>
         <td>Name</td>
+        <td>Email</td>
         <td>Password</td>
         <td>Image</td>
         <td>Sex</td>
@@ -28,6 +29,7 @@
         <tr>
             <td>${user.id}</td>
             <td>${user.name}</td>
+            <td>${user.email}</td>
             <td>${user.password}</td>
             <td><img src="${user.image}"></td>
             <td>${user.sex}</td>
