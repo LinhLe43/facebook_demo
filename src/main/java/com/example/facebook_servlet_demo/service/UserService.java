@@ -27,14 +27,16 @@ public class UserService implements IUserService<User> {
 
     @Override
     public void add(User user) {
-        String sql = "insert into user(name, profile_picture, sex, dob, address) values (?, ?, ?, ?, ?)";
+        String sql = "insert into user(name,email, password, image, sex, dob, address) values (?,?,?, ?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user.getName());
-            preparedStatement.setString(2, user.getImage());
-            preparedStatement.setString(3, user.getSex());
-            preparedStatement.setString(4, user.getDob());
-            preparedStatement.setString(5, user.getAddress());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(4, user.getImage());
+            preparedStatement.setString(5, user.getSex());
+            preparedStatement.setString(6, user.getDob());
+            preparedStatement.setString(7, user.getAddress());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -43,15 +45,17 @@ public class UserService implements IUserService<User> {
 
     @Override
     public void edit(int id, User user) {
-        String sql = "update user set name = ?, profile_picture = ?, sex = ?, dob = ?, address = ? where id = ?";
+        String sql = "update user set name = ?,email = ?,password = ?, image = ?, sex = ?, dob = ?, address = ? where id = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user.getName());
-            preparedStatement.setString(2, user.getImage());
-            preparedStatement.setString(3, user.getSex());
-            preparedStatement.setString(4, user.getDob());
-            preparedStatement.setString(5, user.getAddress());
-            preparedStatement.setInt(6, id);
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(4, user.getImage());
+            preparedStatement.setString(5, user.getSex());
+            preparedStatement.setString(6, user.getDob());
+            preparedStatement.setString(7, user.getAddress());
+            preparedStatement.setInt(8, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -92,5 +96,28 @@ public class UserService implements IUserService<User> {
             throw new RuntimeException(e);
         }
         return users;
+    }
+
+    public User findById(int id) {
+        User user = null;
+        String sql = "select * from user where id = ?;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password");
+                String image = resultSet.getString("image");
+                String sex = resultSet.getString("sex");
+                String dob = resultSet.getString("dob");
+                String address = resultSet.getString("address");
+                user = new User(id, name, email, password, image, sex, dob,address);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
     }
 }
