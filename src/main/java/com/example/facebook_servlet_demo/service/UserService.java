@@ -98,7 +98,7 @@ public class UserService implements IUserService<User> {
         return users;
     }
 
-    public User findById(int id) {
+    public User getById(int id) {
         User user = null;
         String sql = "select * from user where id = ?;";
         try {
