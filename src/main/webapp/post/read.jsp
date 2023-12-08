@@ -26,7 +26,7 @@
         <td>Trạng Thái</td>
         <td>Hoạt Động</td>
     </tr>
-    <c:forEach items="${posts}" var="post">
+    <c:forEach items="${postsAll}" var="post">
         <tr>
             <td>${post.id}</td>
             <td>${post.time}</td>

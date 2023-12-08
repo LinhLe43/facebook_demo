@@ -27,11 +27,11 @@ public class LoginController extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         User account = userService.accountLogin(email, password);
+        HttpSession session = req.getSession();
+        session.setAttribute("account", account);
         if (account == null) {
             resp.sendRedirect("/login");
         } else {
-            HttpSession session = req.getSession();
-            session.setAttribute("account", account);
             resp.sendRedirect("/home");
         }
     }

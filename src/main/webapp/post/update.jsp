@@ -44,8 +44,8 @@
             </c:if>
         </c:forEach>
     </select>
-    <label>Người Đăng</label>
-    <input type="number" name="idUser" value="${post.user.id}">
+<%--    <label>Người Đăng</label>--%>
+    <input hidden="number" name="idUser" value="${post.user.id}">
     <button>Cập nhật</button>
 </form>
 </body>

@@ -33,8 +33,7 @@
             <option value="${category.id}">${category.name}</option>
         </c:forEach>
     </select>
-    <label>Người Đăng</label>
-    <input type="number" name="idUser">
+    <input type="hidden" name="idUser" value="${account.id}">
     <button>Thêm</button>
 </form>
 </body>

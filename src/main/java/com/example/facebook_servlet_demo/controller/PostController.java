@@ -50,7 +50,7 @@ public class PostController extends HttpServlet {
     }
 
     private void showCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("post/create.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("post/createNewForm.jsp");
         List<Category> categories = categoryService.findAll();
         List<Situation> situations = situationService.findAll();
         req.setAttribute("categories", categories);

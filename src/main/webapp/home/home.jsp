@@ -443,16 +443,19 @@
 
                                 <div class="info">
                                     <h6 class="name">
-                                        ${post.user.name}
+                                            ${post.user.name}
                                     </h6>
                                     <span class="time">${post.time}</span>
                                 </div>
                             </div>
 
 
-                            <div class="dots">
-                                <div class="dot"></div>
-                            </div>
+                            <c:if test="${post.user.id == account.id}">
+                                <div class="dots">
+                                    <a class="dot"
+                                       href="http://localhost:8080/posts?action=update&id=${post.id}">Sửa</a>
+                                </div>
+                            </c:if>
                         </div>
 
                         <div class="desc">
