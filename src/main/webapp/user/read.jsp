@@ -22,6 +22,7 @@
         <td>Sex</td>
         <td>Dob</td>
         <td>Address</td>
+        <td colspan="2">Action</td>
     </tr>
     <c:forEach var="user" items="${users}">
         <tr>
@@ -32,6 +33,8 @@
             <td>${user.sex}</td>
             <td>${user.dob}</td>
             <td>${user.address}</td>
+            <td><a href="http://localhost:8080/users?action=update&id=${user.id}">Sửa</a></td>
+            <td><a href="">Xoá</a></td>
         </tr>
     </c:forEach>
 </table>
