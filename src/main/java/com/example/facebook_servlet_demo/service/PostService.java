@@ -78,7 +78,7 @@ public class PostService implements IPostService<Post> {
                 "from post p\n" +
                 "         join category c on c.id = p.idCategory\n" +
                 "         join situation s on p.idSituation = s.id\n" +
-                "         join user u on p.idUser = u.id order by p.time desc;";
+                "         join user u on p.idUser = u.id order by p.id;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();

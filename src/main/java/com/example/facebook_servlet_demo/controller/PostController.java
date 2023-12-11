@@ -67,7 +67,7 @@ public class PostController extends HttpServlet {
     }
 
     private void showUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("post/update.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("post/updateNewForm.jsp");
         int idUpdate = Integer.parseInt(req.getParameter("id"));
         Post updatePost = postService.getById(idUpdate);
         req.setAttribute("post", updatePost);
@@ -128,6 +128,6 @@ public class PostController extends HttpServlet {
         User user = new User(idUser);
         Post updatePost = new Post(content, image, time, situation, category, user);
         postService.edit(idUpdate, updatePost);
-        resp.sendRedirect("/posts?action=list");
+        resp.sendRedirect("/home");
     }
 }

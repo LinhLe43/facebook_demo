@@ -327,30 +327,30 @@
                     </div>
                     <input type="text" placeholder="What on your mind, ${account.name}?" name="" id="">
                 </div>
-                <div class="media">
-                    <div class="category">
-                        <div class="option">
-                            <div class="icon">
-                                <img src="<c:url value='/home/img/icons/video-live.svg'/>" alt="">
-                            </div>
-                            <span>Live video</span>
-                        </div>
+                <%--                <div class="media">--%>
+                <%--                    <div class="category">--%>
+                <%--                        <div class="option">--%>
+                <%--                            <div class="icon">--%>
+                <%--                                <img src="<c:url value='/home/img/icons/video-live.svg'/>" alt="">--%>
+                <%--                            </div>--%>
+                <%--                            <span>Live video</span>--%>
+                <%--                        </div>--%>
 
-                        <div class="option">
-                            <div class="icon">
-                                <img src="<c:url value='/home/img/icons/photos.svg'/>" alt="">
-                            </div>
-                            <span>photo/video</span>
-                        </div>
+                <%--                        <div class="option">--%>
+                <%--                            <div class="icon">--%>
+                <%--                                <img src="<c:url value='/home/img/icons/photos.svg'/>" alt="">--%>
+                <%--                            </div>--%>
+                <%--                            <span>photo/video</span>--%>
+                <%--                        </div>--%>
 
-                        <div class="option">
-                            <div class="icon">
-                                <img src="<c:url value='/home/img/icons/smile.svg'/>" alt="">
-                            </div>
-                            <span>feeling/activity</span>
-                        </div>
-                    </div>
-                </div>
+                <%--                        <div class="option">--%>
+                <%--                            <div class="icon">--%>
+                <%--                                <img src="<c:url value='/home/img/icons/smile.svg'/>" alt="">--%>
+                <%--                            </div>--%>
+                <%--                            <span>feeling/activity</span>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
             </div>
 
             <div class="create-post view smaller-margin">
@@ -443,7 +443,7 @@
 
                                 <div class="info">
                                     <h6 class="name">
-                                            ${post.user.name}
+                                            ${post.user.name} - Post ID: ${post.id}
                                     </h6>
                                     <span class="time">${post.time}</span>
                                 </div>
