@@ -16,8 +16,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "postController", value = "/posts")
@@ -102,9 +106,8 @@ public class PostController extends HttpServlet {
     }
 
     private void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        LocalDate dateObj = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String time = dateObj.format(formatter);
+        Format f = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String time = f.format(new Date());
         String content = req.getParameter("content");
         String image = req.getParameter("image");
         int idSituation = Integer.parseInt(req.getParameter("idSituation"));
@@ -126,9 +129,8 @@ public class PostController extends HttpServlet {
 
     private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int idUpdate = Integer.parseInt(req.getParameter("id"));
-        LocalDate dateObj = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String time = dateObj.format(formatter);
+        Format f = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String time = f.format(new Date());
         String content = req.getParameter("content");
         String image = req.getParameter("image");
         int idSituation = Integer.parseInt(req.getParameter("idSituation"));
