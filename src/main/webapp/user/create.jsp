@@ -18,7 +18,7 @@
 <body>
 <div class="row">
     <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-8 mt-5">
         <h1>Đăng kí</h1>
         <form action="/users?action=create" method="post">
             <div class="form-row">

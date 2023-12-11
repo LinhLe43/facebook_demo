@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @WebServlet(name = "postController", value = "/posts")
@@ -100,9 +102,11 @@ public class PostController extends HttpServlet {
     }
 
     private void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        LocalDate dateObj = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String time = dateObj.format(formatter);
         String content = req.getParameter("content");
         String image = req.getParameter("image");
-        String time = req.getParameter("time");
         int idSituation = Integer.parseInt(req.getParameter("idSituation"));
         int idCategory = Integer.parseInt(req.getParameter("idCategory"));
         int idUser = Integer.parseInt(req.getParameter("idUser"));
@@ -122,9 +126,11 @@ public class PostController extends HttpServlet {
 
     private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int idUpdate = Integer.parseInt(req.getParameter("id"));
+        LocalDate dateObj = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String time = dateObj.format(formatter);
         String content = req.getParameter("content");
         String image = req.getParameter("image");
-        String time = req.getParameter("time");
         int idSituation = Integer.parseInt(req.getParameter("idSituation"));
         int idCategory = Integer.parseInt(req.getParameter("idCategory"));
         int idUser = Integer.parseInt(req.getParameter("idUser"));

@@ -54,17 +54,12 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label for="inputImage">Ảnh</label>
                         <input type="text" class="form-control" id="inputImage" name="image"
                                placeholder="Nhập link ảnh" value="${post.image}">
                     </div>
-                    <div class="form-group col-3">
-                        <label for="inputTime">Thời gian</label>
-                        <input type="text" class="form-control" id="inputTime" name="time"
-                               placeholder="Nhập thời gian" value="${post.time}">
-                    </div>
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label for="inputSituation">Trạng thái</label>
                         <select name="idSituation" id="inputSituation" class="form-control">
                             <c:forEach var="situation" items="${situations}">
@@ -72,7 +67,7 @@
                             </c:forEach>
                         </select>
                     </div>
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label for="inputCategory">Thể loại</label>
                         <select name="idCategory" id="inputCategory" class="form-control">
                             <c:forEach var="category" items="${categories}">
