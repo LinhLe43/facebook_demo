@@ -19,46 +19,46 @@
 <div class="row">
     <div class="col-2"></div>
     <div class="col-8">
-        <form>
+        <h1>Đăng kí</h1>
+        <form action="/users?action=create" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Name</label>
-                    <input type="text" class="form-control" id="inputName" name="name">
+                    <input type="text" class="form-control" id="inputName" name="name" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputAddress">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" name="address">
+                    <input type="text" class="form-control" id="inputAddress" name="address" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" name="email">
+                    <input type="email" class="form-control" id="inputEmail4" name="email" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" name="password">
+                    <input type="password" class="form-control" id="inputPassword4" name="password" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">Image</label>
-                    <input type="text" class="form-control" id="inputCity" name="image">
+                    <input type="text" class="form-control" id="inputCity" name="image" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Sex</label>
-                    <select id="inputState" class="form-control" name="sex">
-                        <option selected>Sex</option>
-                        <option>Nam</option>
-                        <option>Nữ</option>
+                    <select id="inputState" class="form-control" name="sex" required>
+                        <option value="Nam" selected>Nam</option>
+                        <option value="Nữ">Nữ</option>
                     </select>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputZip">Birth</label>
-                    <input type="date" class="form-control" id="inputZip" name="dob">
+                    <input type="date" class="form-control" id="inputZip" name="dob" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button class="btn btn-primary">Sign in</button>
         </form>
     </div>
     <div class="col-2"></div>
