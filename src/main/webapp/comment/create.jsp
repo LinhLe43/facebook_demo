@@ -17,7 +17,7 @@
     <input type="text" name="image">
     <label>Người Bình Luận </label>
     <input type="number" name="idUser">
-    <input type="hidden" name="idPost" value="1">
+    <input type="hidden" name="idPost" value="${idPost}">
     <button>Thêm</button>
 
 </form>

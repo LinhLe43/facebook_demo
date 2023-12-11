@@ -76,6 +76,8 @@ public class CommentController extends HttpServlet {
 
     {
         RequestDispatcher dispatcher = req.getRequestDispatcher("comment/create.jsp");
+        int idPost = Integer.parseInt(req.getParameter("idPost"));
+        req.setAttribute("idPost", idPost);
         dispatcher.forward(req, resp);
     }
 

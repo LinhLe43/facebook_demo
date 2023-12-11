@@ -484,8 +484,12 @@
                                     <img src="<c:url value='/home/img/icons/comment.svg'/>" alt="">
                                 </div>
                                 <span>
-                                    comment
+                                        <a style="color: white" href="http://localhost:8080/comments?action=create&idPost=${post.id}">
+                                        comment
+                                        </a>
                                 </span>
+
+
                             </div>
 
                             <div class="action">
