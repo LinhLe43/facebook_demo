@@ -19,7 +19,9 @@
     <!--logo and search-->
     <div class="left-side">
         <div class="logo">
-            <img src="<c:url value='/home/img/icons/facebook.svg'/>" alt="">
+            <a href="http://localhost:8080/home">
+                <img src="<c:url value='/home/img/icons/facebook.svg'/>" alt="">
+            </a>
         </div>
         <form action="posts" method="post">
             <input type="hidden" name="action" value="search">
@@ -686,9 +688,6 @@
 </div>
 
 
-<script src="<c:url value='js/jquery.min.js'/>"></script>
-<script src="<c:url value='js/owl.carousel.min.js'/>"></script>
-<script src="<c:url value='js/index.js'/>"></script>
 </body>
 
 </html>

@@ -62,7 +62,7 @@
                     <div class="form-group col-3">
                         <label for="inputTime">Thời gian</label>
                         <input type="text" class="form-control" id="inputTime" name="time"
-                               placeholder="Nhập thời gian" ${post.time}>
+                               placeholder="Nhập thời gian" value="${post.time}">
                     </div>
                     <div class="form-group col-3">
                         <label for="inputSituation">Trạng thái</label>

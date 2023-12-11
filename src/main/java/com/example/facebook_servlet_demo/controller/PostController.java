@@ -7,6 +7,7 @@ import com.example.facebook_servlet_demo.model.User;
 import com.example.facebook_servlet_demo.service.CategoryService;
 import com.example.facebook_servlet_demo.service.PostService;
 import com.example.facebook_servlet_demo.service.SituationService;
+import com.example.facebook_servlet_demo.service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +23,7 @@ public class PostController extends HttpServlet {
     private PostService postService = new PostService();
     private CategoryService categoryService = new CategoryService();
     private SituationService situationService = new SituationService();
+    private UserService userService = new UserService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -90,6 +92,15 @@ public class PostController extends HttpServlet {
                 break;
             case "update":
                 update(req, resp);
+                break;
+            case "search":
+                RequestDispatcher dispatcher = req.getRequestDispatcher("post/searchResult.jsp");
+                String name = req.getParameter("name");
+                List<Post> posts = postService.getByUserName(name);
+                req.setAttribute("posts", posts);
+                List<User> users = userService.findAll();
+                req.setAttribute("users", users);
+                dispatcher.forward(req, resp);
                 break;
         }
     }
