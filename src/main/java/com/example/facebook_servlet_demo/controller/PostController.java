@@ -94,13 +94,7 @@ public class PostController extends HttpServlet {
                 update(req, resp);
                 break;
             case "search":
-                RequestDispatcher dispatcher = req.getRequestDispatcher("post/searchResult.jsp");
-                String name = req.getParameter("name");
-                List<Post> posts = postService.getByUserName(name);
-                req.setAttribute("posts", posts);
-                List<User> users = userService.findAll();
-                req.setAttribute("users", users);
-                dispatcher.forward(req, resp);
+                search(req, resp);
                 break;
         }
     }
@@ -140,5 +134,15 @@ public class PostController extends HttpServlet {
         Post updatePost = new Post(content, image, time, situation, category, user);
         postService.edit(idUpdate, updatePost);
         resp.sendRedirect("/home");
+    }
+
+    private void search(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("post/searchResult.jsp");
+        String name = req.getParameter("name");
+        List<Post> posts = postService.getByUserName(name);
+        req.setAttribute("posts", posts);
+        List<User> users = userService.findAll();
+        req.setAttribute("users", users);
+        dispatcher.forward(req, resp);
     }
 }
