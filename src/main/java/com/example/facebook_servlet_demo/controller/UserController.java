@@ -29,6 +29,9 @@ public class UserController extends HttpServlet {
             case "update":
                 showFormUpdate(req, resp);
                 break;
+            case "delete":
+                showFormDelete(req, resp);
+                break;
         }
     }
 
@@ -52,6 +55,14 @@ public class UserController extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 
+    private void showFormDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("user/delete.jsp");
+        int id = Integer.parseInt(req.getParameter("id"));
+        User user = userService.getById(id);
+        req.setAttribute("user", user);
+        dispatcher.forward(req, resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -62,7 +73,9 @@ public class UserController extends HttpServlet {
             case "update":
                 update(req, resp);
                 break;
-
+            case "delete":
+                delete(req, resp);
+                break;
         }
     }
 
@@ -90,6 +103,12 @@ public class UserController extends HttpServlet {
         String address = req.getParameter("address");
         User user = new User(name, email, password, image, sex, dob, address);
         userService.edit(id, user);
+        resp.sendRedirect("/users?action=list");
+    }
+
+    private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        userService.delete(id);
         resp.sendRedirect("/users?action=list");
     }
 }

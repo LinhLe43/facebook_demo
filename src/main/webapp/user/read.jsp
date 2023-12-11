@@ -36,7 +36,7 @@
             <td>${user.dob}</td>
             <td>${user.address}</td>
             <td><a href="http://localhost:8080/users?action=update&id=${user.id}">Sửa</a></td>
-            <td><a href="">Xoá</a></td>
+            <td><a href="http://localhost:8080/users?action=delete&id=${user.id}">Xoá</a></td>
         </tr>
     </c:forEach>
 </table>
