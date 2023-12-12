@@ -13,29 +13,36 @@
 <table border="1px">
     <tr>
         <td>STT</td>
-        <td>Người Comment</td>
-        <td>Ảnh</td>
         <td>Thời gian</td>
-        <td>Nội dung</td>
-        <td>Action</td>
+        <td>Nội Dung</td>
+        <td>ID bài viết</td>
+        <td>ID Người dùng</td>
+        <td>Tên Người dùng</td>
+        <td>Ảnh Người Dùng</td>
+        <td colspan="2">Hành động</td>
     </tr>
     <c:forEach var="comment" items="${comments}">
         <tr>
             <td>${comment.id}</td>
-            <td>${comment.user.name}</td>
-            <td>${comment.date}</td>
+            <td>${comment.time}</td>
             <td>${comment.content}</td>
-            <td>${comment.image}</td>
+            <td>${comment.post.id}</td>
+            <td>${comment.user.id}</td>
+            <td>${comment.user.name}</td>
+            <td><img src="${comment.user.image}"></td>
             <td>
-                <button>Xóa</button>
-            </td>
-            <td>
-                <a
-                    href="http://localhost:8080/comments?action=update&id=${comment.id} ">
+                <a href="http://localhost:8080/comments?action=update&id=${comment.id}">
                     <button>Sửa</button>
                 </a>
-
             </td>
+            <form action="comments" method="post">
+                <td>
+
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="${comment.id}">
+                    <button>Xóa</button>
+                </td>
+            </form>
         </tr>
     </c:forEach>
 </table>

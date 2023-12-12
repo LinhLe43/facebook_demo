@@ -1,4 +1,5 @@
-drop database blog;
+drop
+database blog;
 
 -- Tạo database Blog
 create
@@ -57,7 +58,6 @@ create table comment
     id      int not null primary key auto_increment,
     time    varchar(20),
     content text,
-    image   text,
     idPost  int,
     foreign key (idPost) references post (id),
     idUser  int,
@@ -122,12 +122,12 @@ values ('Đây là bài viết của Lộc',
         '5/12/2023', 3, 4, 4);
 
 -- Tạo dữ liệu cho comment
-insert into comment(time, content, image, idPost, idUser)
-values ('6/12/2023', 'Đây là bình luận của Linh vào bài viết của Đề', 'LinhImage.jpg', 3, 1);
-insert into comment(time, content, image, idPost, idUser)
-values ('6/12/2023', 'Đây là bình luận của Dân vào bài viết của Lộc', 'DanImage.jpg', 4, 2);
-insert into comment(time, content, image, idPost, idUser)
-values ('6/12/2023', 'Đây là bình luận của Lộc vào bài viết của Linh', 'LocImage.jpg', 1, 4);
-insert into comment(time, content, image, idPost, idUser)
-values ('6/12/2023', 'Đây là bình luận của Đề vào bài viết của Dân', 'DeImage.jpg', 2, 3);
+insert into comment(time, content, idPost, idUser)
+values ('6/12/2023', 'Đây là bình luận của Linh vào bài viết của Đề', 3, 1);
+insert into comment(time, content, idPost, idUser)
+values ('6/12/2023', 'Đây là bình luận của Dân vào bài viết của Lộc', 4, 2);
+insert into comment(time, content, idPost, idUser)
+values ('6/12/2023', 'Đây là bình luận của Lộc vào bài viết của Linh', 1, 4);
+insert into comment(time, content, idPost, idUser)
+values ('6/12/2023', 'Đây là bình luận của Đề vào bài viết của Dân', 2, 3);
 
