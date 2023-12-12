@@ -8,6 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facebook</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<c:url value='/home/css/style.css'/> ">
     <link rel="stylesheet" href="<c:url value='/home/css/owl.theme.default.css'/>">
     <link rel="stylesheet" href="<c:url value='/home/css/owl.carousel.min.css'/>">
@@ -88,8 +91,18 @@
                 <img src="<c:url value='/home/img/icons/bell.svg'/>" alt="">
             </div>
 
-            <div class="icon">
-                <a style="" href="http://localhost:8080/login"><i class="fa-solid fa-right-from-bracket" style="color: #f2f4f7"></i></a>
+<%--            <div class="icon">--%>
+<%--                <a style="" href="http://localhost:8080/login"><</a>--%>
+<%--            </div>--%>
+            <div class="dropdown">
+                <button class="icon" type="button" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-right-from-bracket" style="color: #f2f4f7"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+                    <button class="dropdown-item" type="button">Action</button>
+                    <button class="dropdown-item" type="button">Another action</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                </div>
             </div>
         </div>
     </div>
@@ -455,11 +468,21 @@
 
 
                             <c:if test="${post.user.id == account.id}">
-                                <div class="dots">
-                                    <a class="dot"
-                                       href="http://localhost:8080/posts?action=update&id=${post.id}">Sửa</a>
-                                </div>
+<%--                                <div class="dots">--%>
+<%--                                    <a class="dot"--%>
+<%--                                       href="http://localhost:8080/posts?action=update&id=${post.id}">Sửa</a>--%>
+<%--                                </div>--%>
                             </c:if>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    Dropdown button
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="desc">
