@@ -766,7 +766,6 @@ nav .right-side .user-icons .icon.has-notification::after {
 .posts .view .view-post .write-comment .input,
 .posts .view .view-post .write-comment .input .media {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 

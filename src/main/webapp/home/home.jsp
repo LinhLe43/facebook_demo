@@ -536,28 +536,36 @@
                                 </span>
                             </div>
                         </div>
-
-                        <div class="write-comment">
-                            <div class="user">
-                                <div class="profile">
-                                    <img src="${account.image}" alt="">
+                        <form action="comments" method="post">
+                            <input type="hidden" name="action" value="create">
+                            <div class="write-comment">
+                                <div class="user">
+                                    <div class="profile">
+                                        <img src="${account.image}" alt="">
+                                    </div>
+                                </div>
+                                <div class="input">
+                                    <input type="text" placeholder="Write a comment" name="content">
+                                    <input type="hidden" name="idPost" value="${post.id}">
+                                    <input type="hidden" name="idUser" value="${account.id}">
+                                    <button class="btn btn-primary btn-sm">Đăng</button>
                                 </div>
                             </div>
-                            <div class="input">
-                                <input type="text" placeholder="Write a comment" name="name">
-                                <button class="btn btn-primary btn-sm">Đăng</button>
-                            </div>
-                        </div>
-                        <div class="write-comment">
-                            <div class="user">
-                                <div class="profile">
-                                    <img src="${account.image}" alt="">
+                        </form>
+                        <c:forEach var="comment" items="${comments}">
+                            <c:if test="${comment.post.id == post.id}">
+                                <div class="write-comment">
+                                    <div class="user">
+                                        <div class="profile">
+                                            <img src="${comment.user.image}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="input">
+                                        <p>${comment.user.name} <br> ${comment.content}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="input">
-
-                            </div>
-                        </div>
+                            </c:if>
+                        </c:forEach>
                     </div>
                 </div>
             </c:forEach>

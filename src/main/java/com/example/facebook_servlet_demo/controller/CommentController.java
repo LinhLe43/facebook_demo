@@ -91,7 +91,7 @@ public class CommentController extends HttpServlet {
         User user = new User(idUser);
         Comment newComment = new Comment(content, time, post, user);
         commentService.add(newComment);
-        resp.sendRedirect("/comments?action=list");
+        resp.sendRedirect("/home");
     }
 
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
