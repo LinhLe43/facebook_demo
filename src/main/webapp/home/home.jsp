@@ -8,13 +8,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Facebook</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<c:url value='/home/css/style.css'/> ">
     <link rel="stylesheet" href="<c:url value='/home/css/owl.theme.default.css'/>">
     <link rel="stylesheet" href="<c:url value='/home/css/owl.carousel.min.css'/>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 
 <body>
@@ -91,18 +98,12 @@
                 <img src="<c:url value='/home/img/icons/bell.svg'/>" alt="">
             </div>
 
-<%--            <div class="icon">--%>
-<%--                <a style="" href="http://localhost:8080/login"><</a>--%>
-<%--            </div>--%>
-            <div class="dropdown">
-                <button class="icon" type="button" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-right-from-bracket" style="color: #f2f4f7"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                    <button class="dropdown-item" type="button">Action</button>
-                    <button class="dropdown-item" type="button">Another action</button>
-                    <button class="dropdown-item" type="button">Something else here</button>
-                </div>
+            <%--            <div class="icon">--%>
+            <%--                <a style="" href="http://localhost:8080/login"><</a>--%>
+            <%--            </div>--%>
+            <div class="icon">
+                <a style="" href="http://localhost:8080/login"><i class="fa-solid fa-right-from-bracket"
+                                                                  style="color: #f2f4f7"></i></a>
             </div>
         </div>
     </div>
@@ -159,7 +160,7 @@
             </div>
 
             <div class="menu-item">
-                <div class="item-row  border">
+                <div class="item-row">
                     <div class="icon more">
                         <img src="<c:url value='/home/img/icons/arrow-down.svg'/>" alt="">
                     </div>
@@ -468,18 +469,27 @@
 
 
                             <c:if test="${post.user.id == account.id}">
-<%--                                <div class="dots">--%>
-<%--                                    <a class="dot"--%>
-<%--                                       href="http://localhost:8080/posts?action=update&id=${post.id}">Sửa</a>--%>
-<%--                                </div>--%>
+                                <%--                                <div class="dots">--%>
+                                <%--                                    <a class="dot"--%>
+                                <%--                                       href="http://localhost:8080/posts?action=update&id=${post.id}">Sửa</a>--%>
+                                <%--                                </div>--%>
                             </c:if>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                    Dropdown button
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    ...
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a href="http://localhost:8080/posts?action=update&id=${post.id}">
+                                        <button class="dropdown-item" type="button">Action</button>
+                                    </a>
+                                    <form action="posts" method="post">
+                                        <input type="hidden" name="action" value="delete">
+                                        <input type="hidden" name="id" value="${post.id}">
+                                        <a href="">
+                                            <button class="dropdown-item">Xóa</button>
+                                        </a>
+                                    </form>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
                             </div>
@@ -508,7 +518,8 @@
                                     <img src="<c:url value='/home/img/icons/comment.svg'/>" alt="">
                                 </div>
                                 <span>
-                                        <a style="color: white" href="http://localhost:8080/comments?action=create&idPost=${post.id}">
+                                        <a style="color: white"
+                                           href="http://localhost:8080/comments?action=create&idPost=${post.id}">
                                         comment
                                         </a>
                                 </span>
@@ -533,20 +544,18 @@
                                 </div>
                             </div>
                             <div class="input">
-                                <input type="text" placeholder="Write a comment" name="" id="">
-                                <div class="media">
-                                    <div class="icon">
-                                        <img src="<c:url value='/home/img/icons/camera.svg'/>" alt="">
-                                    </div>
-
-                                    <div class="icon">
-                                        <img src="<c:url value='/home/img/icons/image.svg'/>" alt="">
-                                    </div>
-
-                                    <div class="icon">
-                                        <img src="<c:url value='/home/img/icons/smile-2.svg'/>" alt="">
-                                    </div>
+                                <input type="text" placeholder="Write a comment" name="name">
+                                <button class="btn btn-primary btn-sm">Đăng</button>
+                            </div>
+                        </div>
+                        <div class="write-comment">
+                            <div class="user">
+                                <div class="profile">
+                                    <img src="${account.image}" alt="">
                                 </div>
+                            </div>
+                            <div class="input">
+
                             </div>
                         </div>
                     </div>
@@ -675,7 +684,7 @@
             </div>
 
             <div class="menu-item">
-                <div class="item-row  border">
+                <div class="item-row">
                     <div class="icon more">
                         <img src="<c:url value='/home/img/icons/arrow-down.svg'/>" alt="">
                     </div>
