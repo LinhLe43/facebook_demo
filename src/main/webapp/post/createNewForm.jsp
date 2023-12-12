@@ -49,18 +49,18 @@
                     <div class="form-group col-12">
                         <label for="inputContent">Nội dung</label>
                         <input type="text" class="form-control" id="inputContent" name="content"
-                               placeholder="Nhập nội dung">
+                               placeholder="Nhập nội dung" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-4">
                         <label for="inputImage">Ảnh</label>
                         <input type="text" class="form-control" id="inputImage" name="image"
-                               placeholder="Nhập link ảnh">
+                               placeholder="Nhập link ảnh" required>
                     </div>
                     <div class="form-group col-4">
                         <label for="inputSituation">Trạng thái</label>
-                        <select name="idSituation" id="inputSituation" class="form-control">
+                        <select name="idSituation" id="inputSituation" class="form-control" required>
                             <c:forEach var="situation" items="${situations}">
                                 <option value="${situation.id}">${situation.name}</option>
                             </c:forEach>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="form-group col-4">
                         <label for="inputCategory">Thể loại</label>
-                        <select name="idCategory" id="inputCategory" class="form-control">
+                        <select name="idCategory" id="inputCategory" class="form-control" required>
                             <c:forEach var="category" items="${categories}">
                                 <option value="${category.id}">${category.name}</option>
                             </c:forEach>
