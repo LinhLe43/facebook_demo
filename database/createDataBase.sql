@@ -68,7 +68,7 @@ create table comment
 -- Tạo dữ liệu cho user
 insert into user(name, email, password, image, sex, dob, address)
 values ('Linh', 'linh4395@gmail.com', '123',
-        'https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/350109420_764451105152538_4996024575475619500_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=ciQqwmwo7bAAX9PRFT7&_nc_ht=scontent.fhan17-1.fna&oh=00_AfCi_M6Zc_G24TzKm5Qb75jt27eitYDd4rjUtZFYxq-uUA&oe=65745757',
+        'https://kenh14cdn.com/thumb_w/660/2020/7/17/brvn-15950048783381206275371.jpg',
         'Nam', '04/03/1995', 'HN');
 insert into user(name, email, password, image, sex, dob, address)
 values ('Dân', 'dan@gmail.com', '123',
@@ -106,7 +106,7 @@ values ('Chỉ mình tôi');
 -- Tạo dữ liệu cho post
 insert into post(content, image, time, idSituation, idCategory, idUser)
 values ('Đây là bài viết của Linh',
-        'https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/350109420_764451105152538_4996024575475619500_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=ciQqwmwo7bAAX9PRFT7&_nc_ht=scontent.fhan17-1.fna&oh=00_AfCi_M6Zc_G24TzKm5Qb75jt27eitYDd4rjUtZFYxq-uUA&oe=65745757',
+        'https://kenh14cdn.com/thumb_w/660/2020/7/17/brvn-15950048783381206275371.jpg',
         '5/12/2023', 1, 5, 1);
 insert into post(content, image, time, idSituation, idCategory, idUser)
 values ('Đây là bài viết của Dân',
