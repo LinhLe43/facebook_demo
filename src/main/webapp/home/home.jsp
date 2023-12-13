@@ -479,19 +479,20 @@
                                         aria-expanded="false">
                                     ...
                                 </button>
-                                <div class="dropdown-menu">
-                                    <a href="http://localhost:8080/posts?action=update&id=${post.id}">
-                                        <button class="dropdown-item" type="button">Action</button>
-                                    </a>
-                                    <form action="posts" method="post">
-                                        <input type="hidden" name="action" value="delete">
-                                        <input type="hidden" name="id" value="${post.id}">
-                                        <a href="">
-                                            <button class="dropdown-item">Xóa</button>
+                                <c:if test="${account.id == post.user.id}">
+                                    <div class="dropdown-menu">
+                                        <a href="http://localhost:8080/posts?action=update&id=${post.id}">
+                                            <button class="dropdown-item" type="button">Sửa</button>
                                         </a>
-                                    </form>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
+                                        <form action="posts" method="post">
+                                            <input type="hidden" name="action" value="delete">
+                                            <input type="hidden" name="id" value="${post.id}">
+                                            <a href="">
+                                                <button class="dropdown-item">Xóa</button>
+                                            </a>
+                                        </form>
+                                    </div>
+                                </c:if>
                             </div>
                         </div>
 
