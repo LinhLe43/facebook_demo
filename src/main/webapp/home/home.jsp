@@ -719,13 +719,15 @@
                 <h6 class="title">
                     contact
                 </h6>
-                <c:forEach var="user" items="${users}">
-                    <div class="user">
-                        <div class="profile">
-                            <img src="${user.image}" alt="">
+                <c:forEach var="friendShip" items="${friendShips}">
+                    <c:if test="${account.id == friendShip.user1.id}">
+                        <div class="user">
+                            <div class="profile">
+                                <img src="${friendShip.user2.image}" alt="">
+                            </div>
+                            <h4>${friendShip.user2.name}</h4>
                         </div>
-                        <h4>${user.name}</h4>
-                    </div>
+                    </c:if>
                 </c:forEach>
             </div>
         </div>

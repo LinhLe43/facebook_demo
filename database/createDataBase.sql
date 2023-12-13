@@ -64,9 +64,18 @@ create table comment
     foreign key (idUser) references user (id)
 );
 
--- ///////////////////////////////////////// --
+-- Tạo bảng tính năng kết bạn
+create table friendship
+(
+    id      int not null primary key auto_increment,
+    idUser1 int,
+    foreign key (idUser1) references user (id),
+    idUser2 int,
+    foreign key (idUser2) references user (id)
+)
+    -- ///////////////////////////////////////// --
 -- Tạo dữ liệu cho user
-insert into user(name, email, password, image, sex, dob, address)
+    insert into user(name, email, password, image, sex, dob, address)
 values ('Linh', 'linh4395@gmail.com', '123',
         'https://kenh14cdn.com/thumb_w/660/2020/7/17/brvn-15950048783381206275371.jpg',
         'Nam', '04/03/1995', 'HN');
@@ -130,4 +139,9 @@ insert into comment(time, content, idPost, idUser)
 values ('6/12/2023', 'Đây là bình luận của Lộc vào bài viết của Linh', 1, 4);
 insert into comment(time, content, idPost, idUser)
 values ('6/12/2023', 'Đây là bình luận của Đề vào bài viết của Dân', 2, 3);
+
+-- Tạo dữ liệu kết bạn
+insert into friendship(idUser1, idUser2)
+values (1, 2);
+
 
