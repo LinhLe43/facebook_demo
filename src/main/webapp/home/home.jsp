@@ -461,7 +461,7 @@
 
                                 <div class="info">
                                     <h6 class="name">
-                                            ${post.user.name} - Post ID: ${post.id}
+                                            ${post.user.name}
                                     </h6>
                                     <span class="time">${post.time}</span>
                                 </div>
@@ -474,12 +474,13 @@
                                 <%--                                       href="http://localhost:8080/posts?action=update&id=${post.id}">Sửa</a>--%>
                                 <%--                                </div>--%>
                             </c:if>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                                        aria-expanded="false">
-                                    ...
-                                </button>
-                                <c:if test="${account.id == post.user.id}">
+                            <c:if test="${account.id == post.user.id}">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            data-toggle="dropdown"
+                                            aria-expanded="false">
+                                        ...
+                                    </button>
                                     <div class="dropdown-menu">
                                         <a href="http://localhost:8080/posts?action=update&id=${post.id}">
                                             <button class="dropdown-item" type="button">Sửa</button>
@@ -492,8 +493,8 @@
                                             </a>
                                         </form>
                                     </div>
-                                </c:if>
-                            </div>
+                                </div>
+                            </c:if>
                         </div>
 
                         <div class="desc">
