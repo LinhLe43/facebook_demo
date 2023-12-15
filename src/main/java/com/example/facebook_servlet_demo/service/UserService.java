@@ -121,4 +121,31 @@ public class UserService implements IUserService<User> {
         }
         return user;
     }
+
+    public List<User> getUsersByAccountId(int idAccount) {
+        List<User> users = new ArrayList<>();
+        String sql = "select id, name, image\n" +
+                "from user\n" +
+                "where id not in (select u2.id\n" +
+                "                 from friendship f\n" +
+                "                          join user u1 on u1.id = f.idUser1\n" +
+                "                          join user u2 on u2.id = f.idUser2\n" +
+                "                 where u1.id = ?);\n";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            System.out.println(idAccount);
+            preparedStatement.setInt(1, idAccount);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String image = resultSet.getString("image");
+                User user = new User(id, name, image);
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
+    }
 }

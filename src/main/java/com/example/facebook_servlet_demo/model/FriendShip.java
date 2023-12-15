@@ -11,6 +11,11 @@ public class FriendShip {
         this.user2 = user2;
     }
 
+    public FriendShip(User user1, User user2) {
+        this.user1 = user1;
+        this.user2 = user2;
+    }
+
     public int getId() {
         return id;
     }

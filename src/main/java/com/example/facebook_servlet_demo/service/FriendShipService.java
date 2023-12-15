@@ -15,7 +15,16 @@ public class FriendShipService implements IFriendShipService<FriendShip> {
     Connection connection = ConnectToMySQL.getConnection();
     @Override
     public void add(FriendShip friendShip) {
-
+        String sql = "insert into friendship (idUser1, idUser2)\n" +
+                "VALUES (?, ?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, friendShip.getUser1().getId());
+            preparedStatement.setInt(2, friendShip.getUser2().getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

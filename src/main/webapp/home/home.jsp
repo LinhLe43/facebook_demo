@@ -63,7 +63,9 @@
 
         <div class="tab-icon">
             <div class="icon">
-                <img src="<c:url value='/home/img/icons/users.svg'/>" alt="">
+                <a href="http://localhost:8080/users?action=follow">
+                    <img src="<c:url value='/home/img/icons/users.svg'/>" alt="">
+                </a>
             </div>
         </div>
 
@@ -488,9 +490,7 @@
                                         <form action="posts" method="post">
                                             <input type="hidden" name="action" value="delete">
                                             <input type="hidden" name="id" value="${post.id}">
-                                            <a href="">
-                                                <button class="dropdown-item">Xóa</button>
-                                            </a>
+                                            <button class="dropdown-item">Xóa</button>
                                         </form>
                                     </div>
                                 </div>

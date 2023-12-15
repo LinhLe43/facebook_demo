@@ -124,7 +124,7 @@ public class PostController extends HttpServlet {
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int idDelete = Integer.parseInt(req.getParameter("id"));
         postService.delete(idDelete);
-        resp.sendRedirect("/posts?action=list");
+        resp.sendRedirect("/home");
     }
 
     private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {

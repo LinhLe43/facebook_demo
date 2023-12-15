@@ -144,4 +144,7 @@ values ('6/12/2023', 'Đây là bình luận của Đề vào bài viết của 
 insert into friendship(idUser1, idUser2)
 values (1, 2);
 
+insert into friendship(idUser1, idUser2)
+values (1, 3);
+
 
