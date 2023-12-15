@@ -547,7 +547,7 @@
                                     </div>
                                 </div>
                                 <div class="input">
-                                    <input type="text" placeholder="Write a comment" name="content">
+                                    <input type="text" placeholder="Write a comment" name="content" required>
                                     <input type="hidden" name="idPost" value="${post.id}">
                                     <input type="hidden" name="idUser" value="${account.id}">
                                     <button class="btn btn-primary btn-sm">Đăng</button>

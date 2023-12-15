@@ -72,7 +72,7 @@ create table friendship
     foreign key (idUser1) references user (id),
     idUser2 int,
     foreign key (idUser2) references user (id)
-)
+);
     -- ///////////////////////////////////////// --
 -- Tạo dữ liệu cho user
     insert into user(name, email, password, image, sex, dob, address)
