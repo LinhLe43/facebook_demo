@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "commentController", value = "/comments")
@@ -30,7 +33,7 @@ public class CommentController extends HttpServlet {
         String action = req.getParameter("action");
         switch (action) {
             case "list":
-                showListComment(req,resp);
+                showListComment(req, resp);
                 break;
             case "create":
                 showCreate(req, resp);
@@ -38,12 +41,7 @@ public class CommentController extends HttpServlet {
             case "update":
                 showUpdate(req, resp);
                 break;
-            case "view":
-                showView(req, resp);
-                break;
-
         }
-
     }
 
     private void showListComment(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,75 +51,66 @@ public class CommentController extends HttpServlet {
         dispatcher.forward(req, resp);
     }
 
-    private void showUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-
-    {
+    private void showUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher("comment/update.jsp");
         int idUpdate = Integer.parseInt(req.getParameter("id"));
-        Comment updateComment = commentService.getById(idUpdate);
-        req.setAttribute("comment", updateComment);
+        Comment comment = commentService.getById(idUpdate);
+        req.setAttribute("comment", comment);
         dispatcher.forward(req, resp);
     }
 
-    private void showView(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 
-    {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("comment/read.jsp");
-        List<Comment> comments = commentService.findAll();
-        req.setAttribute("comments", comments);
-        dispatcher.forward(req, resp);
-    }
-
-    private void showCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-
-    {
+    private void showCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher("comment/create.jsp");
         dispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-           String action = req.getParameter("action");
-           switch (action){
-               case "create":
-                   create(req, resp);
-                   break;
-               case "delete":
-                   delete(req, resp);
-                   break;
-               case "update":
-                   update(req, resp);
-                   break;
-           }
+        String action = req.getParameter("action");
+        switch (action) {
+            case "create":
+                create(req, resp);
+                break;
+            case "delete":
+                delete(req, resp);
+                break;
+            case "update":
+                update(req, resp);
+                break;
+        }
     }
-    private void create (HttpServletRequest req, HttpServletResponse resp) throws  IOException{
-        String time = req.getParameter("time");
+
+    private void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Format f = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String time = f.format(new Date());
         String content = req.getParameter("content");
-        String image = req.getParameter("image");
         int idPost = Integer.parseInt(req.getParameter("idPost"));
         int idUser = Integer.parseInt(req.getParameter("idUser"));
         Post post = new Post(idPost);
         User user = new User(idUser);
-        Comment newComment = new Comment(content,image,time,post,user);
+        Comment newComment = new Comment(content, time, post, user);
         commentService.add(newComment);
-        resp.sendRedirect("/comments?action=list");
+        resp.sendRedirect("/home");
     }
+
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int idDelete = Integer.parseInt(req.getParameter("id"));
-        postService.delete(idDelete);
+        commentService.delete(idDelete);
         resp.sendRedirect("/comments?action=list");
     }
-    private void update(HttpServletRequest req, HttpServletResponse resp)throws IOException{
+
+    private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int idUpdate = Integer.parseInt(req.getParameter("id"));
-        String time = req.getParameter("time");
         String content = req.getParameter("content");
-        String image = req.getParameter("image");
+        Format f = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String time = f.format(new Date());
         int idPost = Integer.parseInt(req.getParameter("idPost"));
-        int idUser = Integer.parseInt(req.getParameter("idUser"));
         Post post = new Post(idPost);
+        int idUser = Integer.parseInt(req.getParameter("idUser"));
         User user = new User(idUser);
-        Comment updateComment = new Comment(time,content,image,post,user);
-        commentService.edit(idUpdate,updateComment);
-        resp.sendRedirect("/commnets?action=list");
+        Comment updateComment = new Comment(content, time, post, user);
+        commentService.edit(idUpdate, updateComment);
+        resp.sendRedirect("/comments?action=list");
     }
 }

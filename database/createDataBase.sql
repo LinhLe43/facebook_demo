@@ -1,4 +1,5 @@
-drop database blog;
+drop
+database blog;
 
 -- Tạo database Blog
 create
@@ -57,18 +58,26 @@ create table comment
     id      int not null primary key auto_increment,
     time    varchar(20),
     content text,
-    image   text,
     idPost  int,
     foreign key (idPost) references post (id),
     idUser  int,
     foreign key (idUser) references user (id)
 );
 
--- ///////////////////////////////////////// --
+-- Tạo bảng tính năng kết bạn
+create table friendship
+(
+    id      int not null primary key auto_increment,
+    idUser1 int,
+    foreign key (idUser1) references user (id),
+    idUser2 int,
+    foreign key (idUser2) references user (id)
+);
+    -- ///////////////////////////////////////// --
 -- Tạo dữ liệu cho user
-insert into user(name, email, password, image, sex, dob, address)
+    insert into user(name, email, password, image, sex, dob, address)
 values ('Linh', 'linh4395@gmail.com', '123',
-        'https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/350109420_764451105152538_4996024575475619500_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=ciQqwmwo7bAAX9PRFT7&_nc_ht=scontent.fhan17-1.fna&oh=00_AfCi_M6Zc_G24TzKm5Qb75jt27eitYDd4rjUtZFYxq-uUA&oe=65745757',
+        'https://kenh14cdn.com/thumb_w/660/2020/7/17/brvn-15950048783381206275371.jpg',
         'Nam', '04/03/1995', 'HN');
 insert into user(name, email, password, image, sex, dob, address)
 values ('Dân', 'dan@gmail.com', '123',
@@ -106,7 +115,7 @@ values ('Chỉ mình tôi');
 -- Tạo dữ liệu cho post
 insert into post(content, image, time, idSituation, idCategory, idUser)
 values ('Đây là bài viết của Linh',
-        'https://scontent.fhan17-1.fna.fbcdn.net/v/t39.30808-6/350109420_764451105152538_4996024575475619500_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=ciQqwmwo7bAAX9PRFT7&_nc_ht=scontent.fhan17-1.fna&oh=00_AfCi_M6Zc_G24TzKm5Qb75jt27eitYDd4rjUtZFYxq-uUA&oe=65745757',
+        'https://kenh14cdn.com/thumb_w/660/2020/7/17/brvn-15950048783381206275371.jpg',
         '5/12/2023', 1, 5, 1);
 insert into post(content, image, time, idSituation, idCategory, idUser)
 values ('Đây là bài viết của Dân',
@@ -122,11 +131,17 @@ values ('Đây là bài viết của Lộc',
         '5/12/2023', 3, 4, 4);
 
 -- Tạo dữ liệu cho comment
-insert into comment(time, content, image, idPost, idUser)
-values ('6/12/2023', 'Đây là bình luận của Linh vào bài viết của Đề', 'LinhImage.jpg', 3, 1);
-insert into comment(time, content, image, idPost, idUser)
-values ('6/12/2023', 'Đây là bình luận của Dân vào bài viết của Lộc', 'DanImage.jpg', 4, 2);
-insert into comment(time, content, image, idPost, idUser)
-values ('6/12/2023', 'Đây là bình luận của Lộc vào bài viết của Linh', 'LocImage.jpg', 1, 4);
-insert into comment(time, content, image, idPost, idUser)
-values ('6/12/2023', 'Đây là bình luận của Đề vào bài viết của Dân', 'DeImage.jpg', 2, 3);
+insert into comment(time, content, idPost, idUser)
+values ('6/12/2023', 'Đây là bình luận của Linh vào bài viết của Đề', 3, 1);
+insert into comment(time, content, idPost, idUser)
+values ('6/12/2023', 'Đây là bình luận của Dân vào bài viết của Lộc', 4, 2);
+insert into comment(time, content, idPost, idUser)
+values ('6/12/2023', 'Đây là bình luận của Lộc vào bài viết của Linh', 1, 4);
+insert into comment(time, content, idPost, idUser)
+values ('6/12/2023', 'Đây là bình luận của Đề vào bài viết của Dân', 2, 3);
+
+-- Tạo dữ liệu kết bạn
+insert into friendship(idUser1, idUser2)
+values (1, 2);
+
+

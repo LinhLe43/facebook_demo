@@ -13,7 +13,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Create Post</title>
+    <title>Update Post</title>
     <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -43,20 +43,21 @@
                     action="/posts"
                     method="post"
             >
-                <input type="hidden" name="action" value="create">
+                <input type="hidden" name="action" value="update">
+                <input type="hidden" name="id" value="${post.id}">
                 <input type="hidden" name="idUser" value=${account.id}>
                 <div class="form-row">
                     <div class="form-group col-12">
                         <label for="inputContent">Nội dung</label>
                         <input type="text" class="form-control" id="inputContent" name="content"
-                               placeholder="Nhập nội dung" required>
+                               placeholder="Nhập nội dung" value="${post.content}" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-4">
                         <label for="inputImage">Ảnh</label>
                         <input type="text" class="form-control" id="inputImage" name="image"
-                               placeholder="Nhập link ảnh" required>
+                               placeholder="Nhập link ảnh" value="${post.image}" required>
                     </div>
                     <div class="form-group col-4">
                         <label for="inputSituation">Trạng thái</label>
@@ -70,13 +71,18 @@
                         <label for="inputCategory">Thể loại</label>
                         <select name="idCategory" id="inputCategory" class="form-control" required>
                             <c:forEach var="category" items="${categories}">
-                                <option value="${category.id}">${category.name}</option>
+                                <c:if test="${post.category.id == category.id}">
+                                    <option value="${category.id}" selected>${category.name}</option>
+                                </c:if>
+                                <c:if test="${post.category.id != category.id}">
+                                    <option value="${category.id}">${category.name}</option>
+                                </c:if>
                             </c:forEach>
                         </select>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">
-                    Create Product
+                    Update Product
                 </button>
             </form>
         </div>

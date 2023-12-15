@@ -7,6 +7,7 @@ import com.example.facebook_servlet_demo.model.User;
 import com.example.facebook_servlet_demo.service.CategoryService;
 import com.example.facebook_servlet_demo.service.PostService;
 import com.example.facebook_servlet_demo.service.SituationService;
+import com.example.facebook_servlet_demo.service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +16,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "postController", value = "/posts")
@@ -22,6 +29,7 @@ public class PostController extends HttpServlet {
     private PostService postService = new PostService();
     private CategoryService categoryService = new CategoryService();
     private SituationService situationService = new SituationService();
+    private UserService userService = new UserService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -67,7 +75,7 @@ public class PostController extends HttpServlet {
     }
 
     private void showUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("post/update.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("post/updateNewForm.jsp");
         int idUpdate = Integer.parseInt(req.getParameter("id"));
         Post updatePost = postService.getById(idUpdate);
         req.setAttribute("post", updatePost);
@@ -91,13 +99,17 @@ public class PostController extends HttpServlet {
             case "update":
                 update(req, resp);
                 break;
+            case "search":
+                search(req, resp);
+                break;
         }
     }
 
     private void create(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Format f = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String time = f.format(new Date());
         String content = req.getParameter("content");
         String image = req.getParameter("image");
-        String time = req.getParameter("time");
         int idSituation = Integer.parseInt(req.getParameter("idSituation"));
         int idCategory = Integer.parseInt(req.getParameter("idCategory"));
         int idUser = Integer.parseInt(req.getParameter("idUser"));
@@ -117,9 +129,10 @@ public class PostController extends HttpServlet {
 
     private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int idUpdate = Integer.parseInt(req.getParameter("id"));
+        Format f = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        String time = f.format(new Date());
         String content = req.getParameter("content");
         String image = req.getParameter("image");
-        String time = req.getParameter("time");
         int idSituation = Integer.parseInt(req.getParameter("idSituation"));
         int idCategory = Integer.parseInt(req.getParameter("idCategory"));
         int idUser = Integer.parseInt(req.getParameter("idUser"));
@@ -128,6 +141,16 @@ public class PostController extends HttpServlet {
         User user = new User(idUser);
         Post updatePost = new Post(content, image, time, situation, category, user);
         postService.edit(idUpdate, updatePost);
-        resp.sendRedirect("/posts?action=list");
+        resp.sendRedirect("/home");
+    }
+
+    private void search(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("post/searchResult.jsp");
+        String name = req.getParameter("name");
+        List<Post> posts = postService.getByUserName(name);
+        req.setAttribute("posts", posts);
+        List<User> users = userService.findAll();
+        req.setAttribute("users", users);
+        dispatcher.forward(req, resp);
     }
 }

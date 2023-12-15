@@ -23,27 +23,33 @@
         <td>Trạng Thái</td>
         <td colspan="2">Hoạt Động</td>
     </tr>
-        <tr>
-            <td>${post.id}</td>
-            <td>${post.time}</td>
-            <td>${post.user.name}</td>
-            <td>${post.content}</td>
-            <td><img src="${post.image}"></td>
-            <td>${post.category.name}</td>
-            <td>${post.situation.name}</td>
+    <tr>
+        <td>${post.id}</td>
+        <td>${post.time}</td>
+        <td>${post.user.name}</td>
+        <td>${post.content}</td>
+        <td><img src="${post.image}"></td>
+        <td>${post.category.name}</td>
+        <td>${post.situation.name}</td>
+        <td>
+            <a href="http://localhost:8080/posts?action=update&id=${post.id}">
+                <button>Sửa</button>
+            </a>
+        </td>
+        <form action="posts" method="post">
             <td>
-                <a href="http://localhost:8080/posts?action=update&id=${post.id}">
-                    <button>Sửa</button>
-                </a>
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="id" value="${post.id}">
+                <button>Xóa</button>
             </td>
-            <form action="posts" method="post">
-                <td>
-                    <input type="hidden" name="action" value="delete">
-                    <input type="hidden" name="id" value="${post.id}">
-                    <button>Xóa</button>
-                </td>
-            </form>
-        </tr>
+        </form>
+        <td>
+            <a href="http://localhost:8080/comments?action=create&idPost=${post.id}">
+                <button>Add Comment</button>
+            </a>
+        </td>
+
+    </tr>
 </table>
 </body>
 </html>
