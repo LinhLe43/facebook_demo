@@ -130,4 +130,3 @@ insert into comment(time, content, image, idPost, idUser)
 values ('6/12/2023', 'Đây là bình luận của Lộc vào bài viết của Linh', 'LocImage.jpg', 1, 4);
 insert into comment(time, content, image, idPost, idUser)
 values ('6/12/2023', 'Đây là bình luận của Đề vào bài viết của Dân', 'DeImage.jpg', 2, 3);
-
